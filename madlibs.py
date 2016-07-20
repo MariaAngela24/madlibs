@@ -42,14 +42,11 @@ def greet_person():
 def show_madlib_form():
     """going to the madlib form"""
 
-    player = request.args.get("person")
-
     game_yes_no = request.args.get('yesno')
 
     if game_yes_no == "no":
-        return render_template("goodbye.html", 
-                            person=player)
-
+        return render_template("goodbye.html") 
+                        
     else:
         return render_template("game.html")
 
@@ -57,7 +54,8 @@ def show_madlib_form():
 def show_madlib():
     """creating final madlib"""
 
-    name = request.args.get("name")
+    #The .getlist determines that this request will return a list
+    names = request.args.getlist("names")
 
     color = request.args.get("color")
 
@@ -65,11 +63,14 @@ def show_madlib():
 
     adjective = request.args.get("adjective")
 
+    warning = request.args.get("warning")
+
     return render_template("madlib.html", 
-                            name=name,
+                            names=names,
                             color=color,
                             noun=noun,
-                            adjective=adjective)
+                            adjective=adjective,
+                            warning=warning)
 
 
 

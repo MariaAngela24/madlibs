@@ -4,7 +4,11 @@
   <title>A Madlib</title>
 </head>
 <body>
-   There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab. When {{ name }} went to pick it up, it burst into flames in a totally {{ adjective }} way.
+   <!-- Jinja in line 11 was added because checkbox returns a list of values rather
+   than a single value. Note that comma we want to appear in return text is on outside
+   of braces --> 
+   There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab. When 
+        {% for name in names %} {{ name }}, {% endfor %} went to pick it up, it burst into flames in a totally {{ adjective }} way. "{{ warning }}"
    
 
 </body>
